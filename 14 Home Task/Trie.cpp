@@ -51,13 +51,24 @@ void insert(TrieNode* root, string key)
 // Возврашает true если ключ есть в дереве, иначе false 
 bool search(struct TrieNode* root, string key)
 {
+    int index2 = key[0] - 'a';
+    if (index2 < 0 || index2 > 25)
+    {
+        return false;
+
+    }
+
     struct TrieNode* node = root;
 
     for (int i = 0; i < key.length(); i++)
     {
         int index = key[i] - 'a';
+
+
         if (!node->children[index])
+        {
             return false;
+        }
 
         node = node->children[index];
     }
